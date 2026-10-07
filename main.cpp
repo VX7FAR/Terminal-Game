@@ -3,32 +3,32 @@
 #include<chrono>
 #include<windows.h>
 #include "input.h"
+#include<vector>
+#include "game.h"
+#include "display.h"
 using namespace std;
+
+char buffer[10][50];
+
+
 
 int main(){
     cout<<"STARTED"<<endl;
-    int position = 0;
     cout<<"\033[?25l";
-
+    vector2 position;
+    system("cls");
+    
+    
     while (true)
     {
-        // this_thread::sleep_for(chrono::milliseconds(50));
+        this_thread::sleep_for(chrono::milliseconds(50));
         cout << "\033[H";
-
-        if(KeyPressed('D')){
-            // if(true ){
-                position++;
-            // }
-        }
-        if(KeyPressed('A')){
-            position--;
-        }
-
-        for(int i=0; i < position; i++){
-            cout<<' ';
-        }
-        cout<<'0';
+        
+        clearbuffer(buffer);
+        printbuffer(buffer);
     }
  
     cout<<"\033[?25h";
+
+
 }
