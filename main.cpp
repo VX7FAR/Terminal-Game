@@ -15,16 +15,23 @@ void movecursor(size_t x, size_t y){
     cout<<"\033["<<x + 1<< ";" << y + 1<<"H";
 }
 
+void input_thread(){
+
+}
+
 int main(){
     cout<<"STARTED"<<endl;
     cout<<"\033[?25l";      //Hides cursor
-    vector2 position;
     system("cls");
-    
+    clearbuffer(buffer);
+    printbuffer(buffer);
+    cout<<"\033["<<position.y<<";"<<position.x<<"H";
+    cout<<"0";
+
     
     while (true)
     {
-        this_thread::sleep_for(chrono::milliseconds(50));
+        this_thread::sleep_for(chrono::milliseconds(100));
         cout << "\033[H";
         
         if(KeyPressed('A')){
