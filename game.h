@@ -1,18 +1,20 @@
 #pragma once
 #include<iostream>
 #include<string>
-#include<vector>
+
+extern std::string bg[];
+
+enum input_type{
+    incorrect, correct, wrongposition
+};
 
 struct vector2{
-    int x=0; int y=0;
-};
-struct layer{
-    std::string text;
-    size_t text_size;
+    int x;
+    int y;
 };
 
+void printbg();
 
-struct gameobject{
-    std::vector<layer> obj;
-    vector2 size;
-};
+bool keypressed(char key);
+
+void print_element(std::string element, input_type type);
