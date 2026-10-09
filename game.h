@@ -4,7 +4,7 @@
 
 extern std::string bg[];
 
-enum input_type{
+enum result{
     incorrect, correct, wrongposition
 };
 
@@ -15,12 +15,12 @@ struct vector2{
 
 void printbg();
 
+bool findinstring(char c, std::string str);
+
 void movecursor(vector2 to);
 
 bool keypressed(char key);
 
-bool instring(char tofind, std::string findin);
-
 bool booleaninput(std::string in);
 
-void writeintable(std::string input, int attempt);
+bool writeintable(std::string input, std::string word, int attempt);

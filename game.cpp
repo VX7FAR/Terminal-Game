@@ -26,6 +26,15 @@ void printbg()
     }
 }
 
+bool findinstring(char c, std::string str){
+    for(char &s : str){
+        if(c==s){
+            return true;
+        }
+        else {return false;}
+    }
+}
+
 bool keypressed(char key)
 {
     return GetAsyncKeyState(key);
@@ -33,21 +42,6 @@ bool keypressed(char key)
 
 void movecursor(vector2 to){
     std::cout<<"\033[" << to.y <<";"<<to.x<<"H";
-}
-
-bool instring(char tofind, std::string findin)
-{
-    for (int i = 0; i < 5; i++)
-    {
-        if (tofind == findin[i])
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 }
 
 bool booleaninput(std::string in)
@@ -62,13 +56,35 @@ bool booleaninput(std::string in)
     }
 }
 
-void writeintable(std::string input, int attempt){
+bool writeintable(std::string input,std::string word, int attempt){
     int increment = 4;
     vector2 position = {3 - increment, 2*attempt};
 
-    for(char &c : input){
+    if(input == word){
+        for(char &c : word){
+            position.x += increment;
+            movecursor(position);
+            std::cout << "\033[32m" << c;
+        }
+        return true;
+    }
+
+    for(int i=0;i<5;i++){
+        char c = input[i];
         position.x += increment;
         movecursor(position);
-        std::cout<<c;
+        
+        if(c==word[i]){
+            std::cout << "\033[32m"<<c;
+        }
+        else{
+            if(findinstring(c, word)){
+                std::cout << "\033[36m" << c;
+            }
+            else{
+                std::cout << "\033[31m" << c;
+            }
+        }
     }
+    return false;
 }
