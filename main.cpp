@@ -7,33 +7,45 @@
 #include "game.h"
 using namespace std;
 
+string guess;
+
+//Compare individual string -> position cursor -> print with colour
+void executeinput(size_t attemp, string input){
+    vector2 increment = {4,2};
+    vector2 cursorposition = {3,2 * attemp};
+}
+
 int main(){
     system("cls");
-    string guess;
     string con;
+    string nav;
+    size_t attempt;
 
-    // while(true){
-        // cout << "\033[H";
-        // printbg();
-        while(guess.length() < 5){
-            char c = _getch();
-            if(c >= 'a' && c<= 'z'){
-                guess += c;
-                cout<<c;
+    while(true){
+        cin>>nav;
+        if(nav=="wordle"){
+            cout << "\033[H";
+            printbg();
+            while(guess.length() < 5){
+                char c = _getch();
+                if(c >= 'a' && c<= 'z'){
+                    guess += c;
+                    cout<<c;
+                }
+                else if(c>= 'A' && c<='Z'){
+                    guess += c;
+                    cout<<c;
+                }
+                else if(c == '\b' && !guess.empty()){
+                    guess.pop_back();
+                    cout<<"\b \b";
+                }
             }
-            else if(c>= 'A' && c<='Z'){
-                guess += c;
-                cout<<c;
-            }
-            else if(c == '\b' && !guess.empty()){
-                guess.pop_back();
-                cout<<"\b \b";
+            cout<<"Entered word is "<<guess<<". Do you want to confirm? [Y/n]";
+            cin>>con;
+            if(booleaninput(con)){
+                
             }
         }
-        cout<<"Entered word is "<<guess<<". Do you want to confirm? [Y/n]";
-        cin>>con;
-
-        while(true){}
-    
     }
-// }
+}
