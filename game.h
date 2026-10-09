@@ -17,8 +17,8 @@ void printbg();
 
 bool keypressed(char key);
 
-void print_element(std::string element, input_type type);
+void print_element(std::string str, std::string guess, vector2 at, int xincrement);
 
-bool instring(std::string tofind, std::string findin);
+bool instring(char tofind, std::string findin);
 
 bool booleaninput(std::string in);

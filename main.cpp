@@ -8,11 +8,13 @@
 using namespace std;
 
 string guess;
+string random = "asdfg";
 
 //Compare individual string -> position cursor -> print with colour
 void executeinput(size_t attemp, string input){
     vector2 increment = {4,2};
     vector2 cursorposition = {3,2 * attemp};
+    print_element(guess, random, cursorposition, 4);
 }
 
 int main(){
@@ -44,7 +46,7 @@ int main(){
             cout<<"Entered word is "<<guess<<". Do you want to confirm? [Y/n]";
             cin>>con;
             if(booleaninput(con)){
-                
+                executeinput(1,guess);
             }
         }
     }
