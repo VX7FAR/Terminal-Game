@@ -10,44 +10,41 @@ using namespace std;
 string guess;
 string random = "asdfg";
 
-//Compare individual string -> position cursor -> print with colour
-void executeinput(size_t attemp, string input){
-    vector2 increment = {4,2};
-    vector2 cursorposition = {3,2 * attemp};
-    print_element(guess, random, cursorposition, 4);
+//Take 5 digit input in terminal
+string answer_input(){
+    string input = "";
+    while(input.length() < 5){
+        char c = _getch();
+        if(c >= 'a' && c<= 'z'){
+            input += c;
+            cout<<c;
+        }
+        else if(c>= 'A' && c<='Z'){
+            input += c;
+            cout<<c;
+        }
+        else if(c == '\b' && !input.empty()){
+            input.pop_back();
+            cout<<"\b \b";
+        }
+    }
+    return input;
 }
 
 int main(){
     system("cls");
-    string con;
+    string user_input;
+    string answer;
     string nav;
-    size_t attempt;
 
     while(true){
         cin>>nav;
         if(nav=="wordle"){
-            cout << "\033[H";
+            system("cls");
+            cout << "\033[H";           //Move cursor to top left 
             printbg();
-            while(guess.length() < 5){
-                char c = _getch();
-                if(c >= 'a' && c<= 'z'){
-                    guess += c;
-                    cout<<c;
-                }
-                else if(c>= 'A' && c<='Z'){
-                    guess += c;
-                    cout<<c;
-                }
-                else if(c == '\b' && !guess.empty()){
-                    guess.pop_back();
-                    cout<<"\b \b";
-                }
-            }
-            cout<<"Entered word is "<<guess<<". Do you want to confirm? [Y/n]";
-            cin>>con;
-            if(booleaninput(con)){
-                executeinput(1,guess);
-            }
+            answer = answer_input();
+            writeintable(answer,1);
         }
     }
 }

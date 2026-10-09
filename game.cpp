@@ -31,46 +31,9 @@ bool keypressed(char key)
     return GetAsyncKeyState(key);
 }
 
-// void print_element(std::string str, std::string guess, vector2 at, int xincrement)
-// {   at.x -= xincrement;
-//     input_type type;
-//     for (int i = 0; i < 5; i++)
-//     {
-//         at.x += xincrement;
-//         if (str[i] == guess[i])
-//         {
-//             type = correct;
-//         }
-//         else
-//         {
-//             if (instring(str[i], guess))
-//             {
-//                 type = wrongposition;
-//             }
-//             else
-//             {
-//                 type = incorrect;
-//             }
-//         }
-//         std::cout << "\033[" << at.y << ";" << at.x << "H";
-//         switch (type)
-//         {
-//         case incorrect:
-//             std::cout << "\033[31m" << str[i]; // Red
-//             break;
-//         case correct:
-//             std::cout << "\033[32m" << str[i]; // Green
-//             break;
-//         case wrongposition:
-//             std::cout << "\033[36m" << str[i]; // Cyan
-//             break;
-//         default:
-//             break;
-//         }
-//     }
-// }
-
-
+void movecursor(vector2 to){
+    std::cout<<"\033[" << to.y <<";"<<to.x<<"H";
+}
 
 bool instring(char tofind, std::string findin)
 {
@@ -96,5 +59,16 @@ bool booleaninput(std::string in)
     else
     {
         return false;
+    }
+}
+
+void writeintable(std::string input, int attempt){
+    int increment = 4;
+    vector2 position = {3 - increment, 2*attempt};
+
+    for(char &c : input){
+        position.x += increment;
+        movecursor(position);
+        std::cout<<c;
     }
 }

@@ -15,10 +15,12 @@ struct vector2{
 
 void printbg();
 
-bool keypressed(char key);
+void movecursor(vector2 to);
 
-void print_element(std::string str, std::string guess, vector2 at, int xincrement);
+bool keypressed(char key);
 
 bool instring(char tofind, std::string findin);
 
 bool booleaninput(std::string in);
+
+void writeintable(std::string input, int attempt);
