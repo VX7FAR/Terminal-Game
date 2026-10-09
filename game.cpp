@@ -75,14 +75,14 @@ bool writeintable(std::string input,std::string word, int attempt){
         movecursor(position);
         
         if(c==word[i]){
-            std::cout << "\033[32m"<<c;
+            std::cout << "\033[32m"<<c<<"\033[37m";
         }
         else{
             if(findinstring(c, word)){
-                std::cout << "\033[36m" << c;
+                std::cout << "\033[36m" << c<<"\033[37m";
             }
             else{
-                std::cout << "\033[31m" << c;
+                std::cout << "\033[31m" << c<<"\033[37m";
             }
         }
     }
