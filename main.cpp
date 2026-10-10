@@ -48,9 +48,11 @@ int main()
 
     while (true)
     {
-        cout<<"\033[H";
         system("cls");
-        cout << "\033[H" << "Go To: ";
+        for(string s:LOGO){
+            cout<<s<<endl;
+        }
+        cout << "Go To: ";
         cin >> nav;
         if (nav == "wordle")
         {
